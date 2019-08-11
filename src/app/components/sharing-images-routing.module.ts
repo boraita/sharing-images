@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SharingImagesComponent } from './sharing-images/sharing-images.component';
+import { OverviewComponent } from './overview/overview.component';
 
-const routes: Routes = [{ path: '', component: SharingImagesComponent }];
+const routes: Routes = [{ path: '', component: OverviewComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

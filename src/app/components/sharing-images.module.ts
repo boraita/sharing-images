@@ -10,15 +10,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharingImagesRoutingModule } from './sharing-images-routing.module';
 import { ImagesListComponent } from './images-list/images-list.component';
 import { ImageComponent } from './image/image.component';
-import { SharingImagesComponent } from './sharing-images/sharing-images.component';
-import { SharingHeaderComponent } from './sharing-header/sharing-header.component';
+import { OverviewComponent } from './overview/overview.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     ImagesListComponent,
     ImageComponent,
-    SharingImagesComponent,
-    SharingHeaderComponent
+    OverviewComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
