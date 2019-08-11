@@ -1,0 +1,28 @@
+{
+  "prettier.singleQuote": true,
+  "prettier.useTabs": false,
+  "prettier.printWidth": 140,
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": true,
+  "prettier.tslintIntegration": true,
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": true,
+  "peacock.color": "#57B5E0",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#82c8e8",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#dc43ac",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#57b5e0",
+    "titleBar.inactiveBackground": "#57b5e099",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.background": "#57b5e0",
+    "statusBarItem.hoverBackground": "#2ca2d8",
+    "statusBar.foreground": "#15202b",
+    "panel.border": "#82c8e8",
+    "sideBar.border": "#82c8e8",
+    "editorGroup.border": "#82c8e8"
+  }
+}

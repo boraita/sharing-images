@@ -1,0 +1,39 @@
+#!/usr/bin/env groovy
+ pipeline{
+  agent any
+  stages{
+    stage ('install modules'){
+      steps{
+        sh 'npm i --verbose -d'
+      }
+    }
+	stage ('testing') {
+      steps{
+    	sh 'npm test -- --watch=false --browsers=FirefoxHeadless'
+      }
+    }
+	stage ('lint') {
+      steps{
+    	sh '$(npm bin)/ng lint'
+      }
+    }
+    stage ('build') {
+      steps{
+        sh 'npm run build-prod'
+      }
+    }
+    stage ('build image') {
+      steps{
+        sh 'rm -rf node_modules'
+      }
+    }
+  }
+  post {
+         success {
+             echo 'The job was successfully completed!'
+         }
+         failure {
+             mail body: "<b>Sharing images</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", charset: 'UTF-8', from: 'Jenkins pipeline', mimeType: 'text/html', subject: "[TESTING EMAIL SENDING] ERROR CI: Project name -> ${env.JOB_NAME}", to: "${env.CHANGE_AUTHOR_EMAIL}";
+         }
+     }
+}
