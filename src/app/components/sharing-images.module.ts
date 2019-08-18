@@ -14,12 +14,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [
-    ImagesListComponent,
-    ImageComponent,
-    OverviewComponent,
-    HeaderComponent
-  ],
+  declarations: [ImagesListComponent, ImageComponent, OverviewComponent, HeaderComponent],
   imports: [
     CommonModule,
     SharingImagesRoutingModule,
@@ -29,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     MatCardModule,
     MatButtonModule
-  ]
+  ],
+  providers: []
 })
 export class SharingImagesModule {}

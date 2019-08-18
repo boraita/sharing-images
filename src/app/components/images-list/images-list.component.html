@@ -7,8 +7,8 @@
     [cols]="breakpoint"
     (window:resize)="onResize($event)"
   >
-    <mat-grid-tile *ngFor="let item of images" style="background-color: aqua"
-      ><app-image></app-image
+    <mat-grid-tile *ngFor="let image of images | async" style="background-color: aqua"
+      ><app-image [image]="image"></app-image
     ></mat-grid-tile>
   </mat-grid-list>
 </div>
