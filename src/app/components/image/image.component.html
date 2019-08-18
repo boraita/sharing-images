@@ -1,11 +1,11 @@
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="image">
   <mat-card-header fxLayout="row">
-    <mat-card-title>Hora de captura</mat-card-title>
+    <mat-card-title>{{image.date | date}}</mat-card-title>
   </mat-card-header>
   <img
     mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
+    [src]="image.url"
+    [alt]="image.size"
   />
   <mat-card-actions>
     <button mat-raised-button color="primary">Compartir</button>

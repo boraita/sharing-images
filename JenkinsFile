@@ -9,7 +9,7 @@
     }
 	stage ('testing') {
       steps{
-    	sh 'npm test -- --watch=false --browsers=FirefoxHeadless'
+    	sh 'npm test -- --watch=false'
       }
     }
 	stage ('lint') {
