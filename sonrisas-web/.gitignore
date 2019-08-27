@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # no neccesary files
-src/assets/photos
+/src/assets/photos

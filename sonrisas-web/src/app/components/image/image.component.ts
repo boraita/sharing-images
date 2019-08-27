@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ImageModel } from 'app/shared/models/image.model';
+import { ImagesService } from '@services/images.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-image',
@@ -8,9 +10,16 @@ import { ImageModel } from 'app/shared/models/image.model';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent implements OnInit {
+  imageResized: string;
   @Input() image: ImageModel;
 
-  constructor() {}
+  constructor(private imageService: ImagesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.imageService.getThumbnailImage(this.image).subscribe(imageurl => (this.imageResized = imageurl));
+  }
+
+  downloadImage(id: number) {
+    this.imageService.downloadImage(id);
+  }
 }

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SharingImagesRoutingModule } from './sharing-images-routing.module';
 import { ImagesListComponent } from './images-list/images-list.component';
@@ -23,7 +25,9 @@ import { HeaderComponent } from './header/header.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ScrollingModule,
+    MatProgressSpinnerModule
   ],
   providers: []
 })

@@ -1,26 +1,26 @@
 package project.restsharingimage.controller
 
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.*
 import project.restsharingimage.ApplicationConstants
 import project.restsharingimage.models.ImageModel
-import java.util.*
-import kotlin.collections.ArrayList
+import project.restsharingimage.services.ImagesServices
+import javax.servlet.http.HttpServletResponse
+
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"])
-class ImagesController {
-    @GetMapping(ApplicationConstants.BASE_RESOURCE_PATH + "/imagesList")
-    fun imagesList(): ArrayList<ImageModel> {
-        val list = ArrayList<ImageModel>();
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image1",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image2",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image3",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image4",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image5",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image6",Date().toInstant().toString(),"5000"))
-        list.add(ImageModel("http://placehold.it/1920x1024&text=image7",Date().toInstant().toString(),"5000"))
-        return list;
+@CrossOrigin(origins = ["http://localhost:4200", "http://localhost:4201"])
+@RequestMapping(ApplicationConstants.BASE_RESOURCE_PATH)
+class ImagesController(private val imageService: ImagesServices, private val response: HttpServletResponse) {
+    @GetMapping("/imagesList")
+    fun imagesList(): List<ImageModel> {
+        return imageService.getImages();
     }
+
+    @GetMapping(value = "/thumbnail/{idMap}", produces = [MediaType.IMAGE_JPEG_VALUE])
+    fun ThumbnailsImages(@PathVariable idMap: String): ByteArray {
+        var imageName = this.imageService.createThumbnail(idMap);
+        return imageName.readBytes();
+    }
+
 }
