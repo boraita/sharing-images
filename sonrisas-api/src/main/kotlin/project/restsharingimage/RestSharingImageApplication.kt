@@ -19,7 +19,7 @@ fun main(args: Array<String>) {
 }
 
 @Controller
-@CrossOrigin(origins = ["http://localhost:4200", "http://localhost:4201"])
+@CrossOrigin(origins = ["*"], allowedHeaders = ["*"])
 class ForwarderController {
     @RequestMapping("/{path:[^\\.]*}")
     fun forward(): String {
@@ -38,9 +38,9 @@ class StaticResourceConfiguration {
 class ApplicationConstants {
     companion object {
         const val BASE_RESOURCE_PATH = "/api"
-        const val FOLDER_FULL_IMAGES = "Photos folder";
-        const val FOLDER_THUMBNAILS = "src\\main\\resources\\thumbnails\\"
-        const val WATERMARK_IMAGE = "src\\main\\resources\\watermark\\mainImage.png"
-        const val NOT_AVAILABLE_IMAGE = "src\\main\\resources\\static\\not-available.png"
+        const val FOLDER_FULL_IMAGES = "/home/pi/Pictures";
+        const val FOLDER_THUMBNAILS = "src/main/resources/thumbnails/"
+        const val WATERMARK_IMAGE = "src/main/resources/watermark/mainImage.png"
+        const val NOT_AVAILABLE_IMAGE = "src/main/resources/static/not-available.png"
     }
 }

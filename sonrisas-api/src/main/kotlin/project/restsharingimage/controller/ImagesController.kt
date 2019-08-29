@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse
 
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200", "http://localhost:4201"])
+@CrossOrigin(origins = ["*"], allowedHeaders = ["*"])
 @RequestMapping(ApplicationConstants.BASE_RESOURCE_PATH)
 class ImagesController(private val imageService: ImagesServices, private val response: HttpServletResponse) {
     @GetMapping("/imagesList")

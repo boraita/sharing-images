@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ImageModel } from 'app/shared/models/image.model';
 import { ImagesService } from '@services/images.service';
-import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-image',

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiStaticRoot: 'http://' + window.location.hostname + ':8080/',
+  apiStaticRoot: 'http://' + window.location.hostname + ':2704/',
   staticRoot: 'http://' + window.location.hostname + ':4200/'
 };
 
