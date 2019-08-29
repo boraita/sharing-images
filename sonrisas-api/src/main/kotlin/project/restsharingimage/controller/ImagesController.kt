@@ -23,4 +23,10 @@ class ImagesController(private val imageService: ImagesServices, private val res
         return imageName.readBytes();
     }
 
+    @GetMapping(value = "/fullImage/{idMap}", produces = [MediaType.IMAGE_JPEG_VALUE])
+    fun getFullImage(@PathVariable idMap: String): ByteArray? {
+        val fileArrayBytes = this.imageService.addWaterMark(idMap);
+        return fileArrayBytes;
+    }
+
 }

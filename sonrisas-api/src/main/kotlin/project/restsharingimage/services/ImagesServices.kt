@@ -5,8 +5,8 @@ import net.coobird.thumbnailator.geometry.Positions
 import org.springframework.stereotype.Service
 import project.restsharingimage.ApplicationConstants
 import project.restsharingimage.models.ImageModel
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileInputStream
 import javax.annotation.processing.FilerException
 import javax.imageio.ImageIO
 
@@ -14,6 +14,8 @@ import javax.imageio.ImageIO
 class ImagesServices {
     private var imagesListModel: ArrayList<ImageModel> = ArrayList();
     private var mapListImages: HashMap<String, String> = HashMap<String, String>();
+
+    fun selector(p: File): Long = p.lastModified();
 
 
     fun getImages(): List<ImageModel> {
@@ -29,8 +31,8 @@ class ImagesServices {
         val directory = File(ApplicationConstants.FOLDER_FULL_IMAGES);
         val files: Array<File>? = directory.listFiles();
         if (files != null && files.size > this.imagesListModel.size) {
-            files.sortWith(compareBy({ it.lastModified() }, { it.lastModified() }))
-            var newFiles = files.sliceArray(this.imagesListModel.size until files.size)
+            files.sortBy { selector(it) }
+            var newFiles = files.sliceArray(0 until files.size - this.imagesListModel.size)
             newFiles.forEach { file: File ->
                 if (file.exists() && file.length() > 0) {
                     var mapId = file.lastModified().toString() + file.name.split('.')[0];
@@ -42,8 +44,6 @@ class ImagesServices {
     }
 
     fun createThumbnail(idName: String): File {
-
-
         try {
             val urlImage = this.getUrlImage(idName);
             Thumbnails.of(urlImage)
@@ -52,8 +52,21 @@ class ImagesServices {
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(File(ApplicationConstants.WATERMARK_IMAGE)), 0.2f)
                     .toFile(ApplicationConstants.FOLDER_THUMBNAILS + idName);
             return File(ApplicationConstants.FOLDER_THUMBNAILS + idName + ".jpg");
-        } catch (e: FilerException) {
+        } catch (e: Exception) {
             return File(ApplicationConstants.NOT_AVAILABLE_IMAGE);
+        }
+    }
+
+    fun addWaterMark(idName: String): ByteArray? {
+        try {
+            val urlImage = this.getUrlImage(idName);
+            val bos = ByteArrayOutputStream()
+            Thumbnails.of(urlImage)
+                    .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(File(ApplicationConstants.WATERMARK_IMAGE)), 0.2f).size(1920, 1080).toOutputStream(bos);
+            val data = bos.toByteArray();
+            return data;
+        } catch (e: FilerException) {
+            return File(ApplicationConstants.NOT_AVAILABLE_IMAGE).readBytes();
         }
     }
 }

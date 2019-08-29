@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { saveAs } from 'file-saver';
 
 import { ImageModel } from '../shared/models/image.model';
 import { ApiUrlServolveService } from '../shared/services/api-url-servolve.service';
 import { ApiResources } from '../shared/utils/resources-urls';
-import { environment } from 'environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ImagesService {
@@ -28,11 +28,9 @@ export class ImagesService {
       )
     );
   }
-  downloadImage(idMap: number) {
-    const url = this.apiResolve.resolveAPI(ApiResources.DOWNLOAD_IMAGE, idMap);
-    this.httpClient.get(url).subscribe(image => {
-      const asd = image;
-    });
+  downloadImage(name: string) {
+    const url = this.apiResolve.resolveAPI(ApiResources.DOWNLOAD_IMAGE, name);
+    return this.httpClient.get(url, { responseType: 'blob' }).pipe(map(nameImage => saveAs(nameImage, name)));
   }
   getThumbnailImage(image: ImageModel): Observable<any> {
     const url = this.apiResolve.resolveAPI(ApiResources.GET_THUMBNAIL, image.idMap);

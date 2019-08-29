@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ImageModel } from 'app/shared/models/image.model';
 import { ImagesService } from '@services/images.service';
-import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-image',
@@ -19,7 +19,7 @@ export class ImageComponent implements OnInit {
     this.imageService.getThumbnailImage(this.image).subscribe(imageurl => (this.imageResized = imageurl));
   }
 
-  downloadImage(id: number) {
-    this.imageService.downloadImage(id);
+  downloadImage() {
+    this.imageService.downloadImage(this.image.idMap).subscribe();
   }
 }

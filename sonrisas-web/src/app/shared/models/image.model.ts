@@ -1,5 +1,5 @@
 export class ImageModel {
-  idMap: number;
+  idMap: string;
   name: string;
   date: Date;
   size: number;

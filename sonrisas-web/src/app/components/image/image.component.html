@@ -4,11 +4,11 @@
   </mat-card-header>
   <img mat-card-image [src]="imageResized" [alt]="image.name" />
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="downloadImage(image.size)">Compartir</button>
+    <button mat-raised-button color="primary" (click)="downloadImage()">Compartir</button>
   </mat-card-actions>
 </mat-card>
 <ng-template #loadingImage>
   <div fxLayout="row" fxLayoutAlign="center">
-    <mat-spinner  fxLayoutGap="10px"></mat-spinner>
+    <mat-spinner fxLayoutGap="10px"></mat-spinner>
   </div>
 </ng-template>
