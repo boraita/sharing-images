@@ -34,9 +34,9 @@ class ImagesServices {
             files.sortBy { selector(it) }
             var newFiles = files.sliceArray(0 until files.size - this.imagesListModel.size)
             newFiles.forEach { file: File ->
-                if (file.exists() && file.length() > 0) {
+                if (file.exists() && file.length() > 0 && file.name.endsWith(".jpg")) {
                     var mapId = file.lastModified().toString() + file.name.split('.')[0];
-                    this.imagesListModel.add(ImageModel(mapId, file.name, file.lastModified(), file.length()))
+                    this.imagesListModel.add(0,ImageModel(mapId, file.name, file.lastModified(), file.length()))
                     this.mapListImages[mapId] = file.toPath().toString();
                 }
             }

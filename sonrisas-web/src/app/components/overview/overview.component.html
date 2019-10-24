@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-images-list></app-images-list>
+<app-header (lastNumberSelected)="showNumberImages = $event"></app-header>
+<app-images-list [showNumberImages]="showNumberImages"></app-images-list>
