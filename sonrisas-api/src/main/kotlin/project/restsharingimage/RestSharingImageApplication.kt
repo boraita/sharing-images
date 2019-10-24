@@ -38,7 +38,7 @@ class StaticResourceConfiguration {
 class ApplicationConstants {
     companion object {
         const val BASE_RESOURCE_PATH = "/api"
-        const val FOLDER_FULL_IMAGES = "/home/pi/Pictures";
+        const val FOLDER_FULL_IMAGES = "C:/Images_nube";
         const val FOLDER_THUMBNAILS = "src/main/resources/thumbnails/"
         const val WATERMARK_IMAGE = "src/main/resources/watermark/mainImage.png"
         const val NOT_AVAILABLE_IMAGE = "src/main/resources/static/not-available.png"

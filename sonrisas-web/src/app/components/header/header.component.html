@@ -1,3 +1,12 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
   <span>Compartiendo sonrisas</span>
+  <div></div>
+  <mat-form-field>
+    <mat-label>Últimas fotos</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="setNumberShowing()">
+      <mat-option *ngFor="let number of numberLasts" [value]="number">
+        {{ number == -1 ? 'Todas' : number }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-toolbar>

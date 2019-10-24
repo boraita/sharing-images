@@ -1,5 +1,5 @@
 <cdk-virtual-scroll-viewport style="height: 900px" itemSize="640" minBufferPx="600" maxBufferPx="1000">
-  <ng-container *cdkVirtualFor="let image of images | async; templateCacheSize: 0" class="list-group-item">
+  <ng-container *cdkVirtualFor="let image of images; templateCacheSize: 0" class="list-group-item">
     <app-image [image]="image"></app-image>
   </ng-container>
 </cdk-virtual-scroll-viewport>

@@ -21,8 +21,9 @@
     "statusBar.background": "#57b5e0",
     "statusBarItem.hoverBackground": "#2ca2d8",
     "statusBar.foreground": "#15202b",
-    "panel.border": "#82c8e8",
-    "sideBar.border": "#82c8e8",
-    "editorGroup.border": "#82c8e8"
+    "activityBar.activeBackground": "#82c8e8",
+    "activityBar.activeBorder": "#dc43ac",
+    "statusBar.border": "#57b5e0",
+    "titleBar.border": "#57b5e0"
   }
 }
