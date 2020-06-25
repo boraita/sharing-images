@@ -30,8 +30,7 @@
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -138,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "sharingimages"
+  "defaultProject": "sharingimages",
+  "cli": {
+    "analytics": "5c7aeb82-20ad-47b1-9d5b-e5eb224dab77"
+  }
 }
