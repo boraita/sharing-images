@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 import { ImagesService } from '@services/images.service';
 import { ImageModel } from '@shared/models/image.model';
-import { Subject } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-images-list',
@@ -16,7 +16,7 @@ export class ImagesListComponent implements OnInit, OnChanges, OnDestroy {
   imagesFiltered: Array<ImageModel>;
   imagesListSubscriptor: Subject<ImageModel[]> = new Subject<ImageModel[]>();
   @Input() showNumberImages = -1;
-  constructor(private imageService: ImagesService) {}
+  constructor(private imageService: ImagesService) { }
 
   ngOnInit() {
     this.initImagesSubcriptor();
@@ -38,6 +38,7 @@ export class ImagesListComponent implements OnInit, OnChanges, OnDestroy {
     this.imagesListSubscriptor
       .pipe(switchMap(() => this.imageService.getImageList().pipe(map(images => (this.images = images)))))
       .subscribe();
+    this.imagesListSubscriptor.next();
   }
 
   getImages() {
